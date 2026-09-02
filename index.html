@@ -202,6 +202,27 @@ document.addEventListener('DOMContentLoaded', async function() {
  document.addEventListener('DOMContentLoaded',wire);
 })();
 </script>
+<script id="th-research">
+(function(){
+ var CSS='.applied-skills{margin-top:18px}.current-research{margin-top:72px}.current-research .sec-head{margin-bottom:22px}.research-card{display:block;border:1px solid var(--hairline);border-radius:16px;padding:30px;background:var(--bg-1)}.research-through{font-size:17px;line-height:1.55;color:var(--ink);margin:0 0 20px;font-weight:500}.research-card .proj-desc{margin:0 0 14px;font-size:15px;line-height:1.6}.research-fig{margin:24px 0;border:1px dashed var(--hairline);border-radius:12px;overflow:hidden;background:var(--bg-2)}.research-fig img{display:block;width:100%;height:auto}.research-fig .fig-ph{padding:56px 20px;text-align:center;color:var(--ink-faint);font-size:12px;letter-spacing:.12em;text-transform:uppercase}.research-artifacts{list-style:none;padding:0;margin:20px 0;display:grid;gap:9px}.research-artifacts li{color:var(--ink-dim);font-size:14px;line-height:1.5;padding-left:16px;position:relative}.research-artifacts li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--accent)}.research-frame{margin:20px 0 0;color:var(--ink);font-size:15px;line-height:1.55}.research-card .proj-foot{margin-top:20px}@media (max-width:560px){.research-card{padding:22px}}';
+ function css(){ if(!document.getElementById('th-research-css')){var st=document.createElement('style');st.id='th-research-css';st.textContent=CSS;(document.head||document.documentElement).appendChild(st);} }
+ var ARROW='<svg width="13" height="13" viewBox="0 0 13 13"><path d="M3 10 L10 3 M5 3 H10 V8" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+ var SKILLS=`<div class="proj-skills applied-skills"><span class="chip">Sampling discipline</span><span class="chip">Scale design</span><span class="chip">Response-bias control</span><span class="chip">Measurement</span><span class="chip">Calibration</span></div>`;
+ var RESEARCH=`<div class="current-research" id="current-research"><div class="sec-head"><span class="section-num">CURRENT RESEARCH</span><h2>Surplus Intelligence Platform</h2></div><div class="research-card"><p class="research-through">Measurement of hard-to-measure things: nine years asking whether marketing worked, formal training in AI implementation, now instrumenting whether AI deployments work.</p><p class="proj-desc">Businesses are told to adopt AI. Almost none measure whether a given deployment pays. The result is a market long on adoption and short on evidence: tools get bought, pilots get run, and the question of return stays open.</p><p class="proj-desc">The measurement problem showed up while I was holding the right tools: a decade of asking whether marketing worked, and formal training in how AI gets deployed. Measuring whether an AI deployment pays is that same craft, pointed at a harder object.</p><p class="proj-desc">The platform classifies a deployment on a single behavioral construct, share of task engagement, and carries every estimate as a range (P10, P50, P90) rather than a single number. Each estimate is sealed with its provenance at the moment it is made, and designed to be scored against real outcomes at horizon. That scoring is how the instrument is calibrated.</p><figure class="research-fig"><div class="fig-ph">FIG. 1</div></figure><ul class="research-artifacts"><li>Provisional patent filed August 2026. USPTO 64/138,769. Sole inventor.</li><li>A registered six-arm comparative study, blind-scored, with prospective resolution. The first cohort resolves Q4.</li><li>A growing body of cases.</li></ul><p class="research-frame">The goal is senior consumer-insights and product-innovation work. The platform is what taking the craft seriously looks like between roles.</p><div class="proj-foot"><a class="proj-link" href="#" data-placeholder="platform-url" target="_blank" rel="noopener">See the live platform`+ARROW+`</a></div></div></div>`;
+ function inject(){
+  css();
+  var sec=document.getElementById('projects'); if(!sec) return false;
+  var head=sec.querySelector('.sec-head'), grid=sec.querySelector('.proj-grid'); if(!head||!grid) return false;
+  if(!document.getElementById('current-research')){
+   var lead=head.querySelector('.sec-lead'); var sk=document.createElement('div'); sk.innerHTML=SKILLS; (lead||head).insertAdjacentElement('afterend', sk.firstElementChild);
+   var cr=document.createElement('div'); cr.innerHTML=RESEARCH; grid.insertAdjacentElement('afterend', cr.firstElementChild);
+  }
+  return true;
+ }
+ css(); var n=0,iv=setInterval(function(){ if(inject()||++n>80) clearInterval(iv); },120);
+ document.addEventListener('DOMContentLoaded',inject);
+})();
+</script>
 </body>
 </html>
 <!-- redeploy 1783361893 -->
